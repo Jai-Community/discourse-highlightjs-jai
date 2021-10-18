@@ -1,0 +1,8 @@
+/* We do not nest classes to make it easier to include this file without pre-compilation in test-syntax-highlight.html */
+
+.lang-jai .hljs-keyword { color: #8a2be2; }
+.lang-jai .hljs-literal { color: blue; }
+.lang-jai .hljs-comment { color: olive; }
+.lang-jai .hljs-built_in, .hljs-type { color: teal; text-decoration: underline; }
+.lang-jai .hljs-tag { color: darkgray; font-weight: bold; }
+.lang-jai .hljs-meta { color: darkorange; }

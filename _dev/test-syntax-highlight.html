@@ -1,0 +1,155 @@
+<html lang="en">
+<head >
+    <title>Jai Syntax Highlighting</title>
+    <meta charset="utf-8"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../common/common.scss">
+
+    <style>
+        /* These styles are for copying only */
+        h1 {
+            font-family: monospace;
+            text-align: center;
+        }
+        body {
+            font-size: 0.9em;
+            padding: 0.4rem;
+            background-color: beige;
+        }
+        #jai_code {
+            --gai-code-grid-gap: 1rem;
+            display: grid;
+            gap: 0;
+            grid-template-columns: 1fr;
+            grid-template-areas:
+                "code1"
+                "code2";
+        }
+        @media (min-width: 1100px) {
+            #jai_code {
+                grid-template-columns: 1fr 1fr;
+                grid-template-areas: "code1 code2";
+                gap: var(--gai-code-grid-gap);
+            }
+        }
+        #code_container_1 {
+            grid-area: code1;
+        }
+        #code_container_2 {
+            grid-area: code2;
+        }
+        .lang-jai {
+            align-self: stretch;
+            --jai-code-border: 1px dotted grey;
+            --jai-code-padding: 0.4rem;
+            background-color: white;
+            padding: var(--jai-code-padding);
+            border: var(--jai-code-border);
+            margin: 0;
+
+        }
+        .lang-jai:nth-of-type(1) {
+            border-bottom: 0;
+        }
+        .lang-jai:nth-of-type(n+2) {
+            border-top: 0;
+            padding-top: 0;
+        }
+        @media (min-width: 1100px) {
+            .lang-jai:nth-of-type(1) {
+                border-bottom: var(--jai-code-border);
+            }
+            .lang-jai:nth-of-type(n+2) {
+                border-top: var(--jai-code-border);
+                padding-top: var(--jai-code-padding);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<h1>Test Jai Syntax Highlighting</h1>
+
+<div id="jai_code">
+    <pre id='code_container_1' class="lang-jai">Run this fiddle and the highlighted code will appear here.</pre>
+    <pre id='code_container_2' class="lang-jai"></pre>
+
+</div>
+
+<script type="text/javascript" src="../_dev/shared.js"></script>
+<script type="text/javascript">
+    var jai_code_1 = `// one-line comment
+a := 1.1e-10;  // inline comment
+b := 1.1e10; /* inline comment in asterisks */
+c := 1.1e+10;
+
+/* single line comment */
+
+/* Multiline comment
+   2nd line.
+*/
+sex :: enum { M; F; }
+List :: struct(TItem: Type) {
+    entries: *ListEntry(TItem);
+}
+ListEntry :: struct(TItem: Type) {
+    item: TItem;
+}
+extractEntries :: (list: *$T/List, entries: *List(ListEntry(T.TItem))) {
+    // ...
+}
+Vector3 :: struct { x: float; y: float; z: float; }
+vec_proc :: (a: Vector3) -> float #c_call {
+    return a.x + a.y + a.z;
+}
+v := Vector3.{1, 2, 3};
+
+z: Complex($A, $B, $C);
+
+#if mode == .GLOBAL {
+    array : [global_size] u8 = ---;
+}
+`;
+
+    var jai_code_2 = `point :: ($$x: int, $$y: int) -> Point {
+  #if is_constant(x) && is_constant(y) {
+    return Point.{x,y};
+  } else {
+    p : Point = ---;
+    p.x = x;
+    p.y = y;
+    return p;
+  }
+}
+f :: () => Point {} @RunWhenReady
+INSERTION_STRING :: #string DONE
+NUM_ENTITY_TYPES :: %1;
+DONE
+main :: () {
+    print("a % b % c %\\n", a, b, c);
+    print("a < 0 %, a == 0 %, a > 0 %\\n", a < 0, a == 0, a > 0);
+    list: List(s32);
+    entries: List(ListEntry(s32));
+    extractEntries(*list, *entries);
+    things: [..]int;
+    array_add(*things, 7);
+    print("%\\n", (cast((a: *Vector3) -> float #c_call)vec_proc)(*v));
+}
+#run {
+    set_build_options_dc(.{do_output=false});
+    write_string("Hello world\\n");
+}
+#import "Compiler";
+`;
+    if (jai_language_definition) {
+        hljs.registerLanguage('jai', jai_language_definition);
+    } else {
+        console.log('jai_language_definition() function not defined');
+    }
+    var highlighted_code_1 = hljs.highlight(jai_code_1, {language: 'jai', ignoreIllegals: true});
+    var highlighted_code_2 = hljs.highlight(jai_code_2, {language: 'jai', ignoreIllegals: true});
+    document.getElementById('code_container_1').innerHTML = highlighted_code_1.value;
+    document.getElementById('code_container_2').innerHTML = highlighted_code_2.value;
+</script>
+</body>
+</html>
