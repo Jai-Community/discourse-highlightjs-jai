@@ -2,7 +2,8 @@
 // Once done, copy this function over to common/head_tag.html
 function jai_language_definition() {
     return {
-        name: 'Jai',
+        name: 'jai',
+        aliases: ['jai'],
         disableAutodetect: false,
         case_insensitive: true,
         keywords: {
