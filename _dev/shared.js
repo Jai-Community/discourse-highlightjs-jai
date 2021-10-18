@@ -3,7 +3,7 @@
 function jai_language_definition() {
     return {
         name: 'Jai',
-        disableAutodetect: true,
+        disableAutodetect: false,
         case_insensitive: true,
         keywords: {
             $pattern: /([_a-z][a-z0-9_]+|---)/,
