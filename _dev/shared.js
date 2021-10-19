@@ -8,12 +8,12 @@ function jai_language_definition() {
         name: 'jai',
         aliases: ['jai'],
         disableAutodetect: false,
-        case_insensitive: true,
+        case_insensitive: false,
         keywords: {
-            $pattern: /([_a-z][a-z0-9_]+|---)/,
+            $pattern: /([_a-zA-Z][a-zA-Z0-9_]+|---)/,
             keyword: ['return', 'struct', 'if', 'ifx', 'else', 'case', 'for', 'while', 'break', 'using', 'enum', 'new', 'defer', 'no_check', 'cast' ],
             literal: ['false', 'true', 'null', 'void', '---',],
-            built_in: ['Any', 'Type',],
+            built_in: ['Any', 'Type', 'Code'],
             type: ['u8', 'u16', 'u32', 'u64', 's8', 's16', 's32', 's64', 'int', 'float', 'float32', 'float64', 'string'],
         },
         contains: [
@@ -25,8 +25,8 @@ function jai_language_definition() {
                 begin: `/\\*`,
                 end: `\\*/`,
             },
-            {className: 'tag', begin: `\\@[a-z_][a-z0-9]*`},
-            {className: 'meta', begin: `#[a-z][a-z0-9_]*`},
+            {className: 'tag', begin: `\\@[a-zA-Z_][a-zA-Z0-9]*`},
+            {className: 'meta', begin: `#[a-zA-Z][a-zA-Z0-9_]*`},
         ]
     };
 }

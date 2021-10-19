@@ -140,6 +140,7 @@ main :: () {
     things: [..]int;
     array_add(*things, 7);
     print("%\\n", (cast((a: *Vector3) -> float #c_call)vec_proc)(*v));
+    print("A is of type %, value %.\\n", type_of(a_variable), a_variable);
 }
 #run {
     set_build_options_dc(.{do_output=false});

@@ -1,7 +1,3 @@
-Word "type" should not be highlighted in the following code block:
-    print("A is of type %, value %.\n", type_of(a_variable), a_variable);
-                   ^^^^
-
 Detect string literals (even if we don't want to highlight them), and disable highlighting of types etc inside string literals.
 
 Highlight % inside string literals.
