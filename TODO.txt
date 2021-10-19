@@ -3,3 +3,5 @@ Detect string literals (even if we don't want to highlight them), and disable hi
 Highlight % inside string literals.
 
 Allow */ and /* inside multiline comments.
+
+Highlight "it" and "it_index" in loops. This is a very tricky one, as we only want to highlight it within the right context, whereas the word "it" can usually be found in other places, like comments.
