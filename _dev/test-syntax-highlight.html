@@ -131,9 +131,16 @@ f :: () => Point {} @RunWhenReady
 INSERTION_STRING :: #string DONE
 NUM_ENTITY_TYPES :: %1;
 DONE
+Direction :: enum_flags u8 {
+    EAST  :: 1;
+    NORTH :: 2;
+    WEST  :: 4;
+    SOUTH :: 8;
+}
 main :: () {
     print("a % b % c %\\n", a, b, c);
     print("a < 0 %, a == 0 %, a > 0 %\\n", a < 0, a == 0, a > 0);
+    bd.ByteWidth = size_of(Vector3) * 3;
     list: List(s32);
     entries: List(ListEntry(s32));
     extractEntries(*list, *entries);
