@@ -1,4 +1,4 @@
-/* We do not nest classes to make it easier to include this file without pre-compilation in test-syntax-highlight.html */
+/* We do not use SASS features here to make it easier to include this file without pre-compilation in _dev/test-syntax-highlight.html */
 
 .lang-jai .hljs-keyword { color: #8a2be2; }
 .lang-jai .hljs-literal { color: blue; }
@@ -6,3 +6,16 @@
 .lang-jai .hljs-built_in, .hljs-type { color: teal; text-decoration: underline; }
 .lang-jai .hljs-tag { color: darkgray; font-weight: bold; }
 .lang-jai .hljs-meta { color: darkorange; }
+
+
+.lang-jai.hljs {
+  /* Disable max-height as to avoid vertical scrollbar; always show code blocks in full. */
+  max-height: none;
+
+  /* Enable word wrapping in jai code as to avoid horizontal scrollbar.  */
+  overflow-x: auto;
+  white-space: pre-wrap;
+
+  /* Fit more code horizontally into code blocks. */
+  font-size: 0.8rem;
+}
