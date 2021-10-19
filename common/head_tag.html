@@ -5,28 +5,30 @@
     // Adapted from: https://meta.discourse.org/t/hack-to-install-a-new-language-for-highlight-js-on-a-hosted-discourse/55818/7
     //
     api.registerHighlightJSLanguage("jai", () => {
-        return {
-            name: 'jai',
-            aliases: ['jai'],
-            case_insensitive: true,
-            keywords: {
-                $pattern: /([_a-z][a-z0-9_]+|---)/,
-                keyword: ['return', 'struct', 'if', 'ifx', 'else', 'case', 'for', 'while', 'break', 'using', 'enum', 'new', 'defer', 'no_check', 'cast' ],
-                literal: ['false', 'true', 'null', '---',],
-                built_in: ['Any', 'Type',],
-                type: ['u8', 'u16', 'u32', 'u64', 's8', 's16', 's32', 's64', 'int', 'float', 'float32', 'float64', 'string'],
+    return {
+        name: 'jai',
+        aliases: ['jai'],
+        disableAutodetect: false,
+        case_insensitive: true,
+        keywords: {
+            $pattern: /([_a-z][a-z0-9_]+|---)/,
+            keyword: ['return', 'struct', 'if', 'ifx', 'else', 'case', 'for', 'while', 'break', 'using', 'enum', 'new', 'defer', 'no_check', 'cast' ],
+            literal: ['false', 'true', 'null', '---',],
+            built_in: ['Any', 'Type',],
+            type: ['u8', 'u16', 'u32', 'u64', 's8', 's16', 's32', 's64', 'int', 'float', 'float32', 'float64', 'string'],
+        },
+        contains: [
+            {
+                className: 'comment', begin: '//', end: '$',
             },
-            contains: [
-                {
-                    scope: 'comment', begin: '//', end: '$',
-                },
-                {
-                    scope: 'comment',
-                    begin: `/\\*`,
-                    end: `\\*/`,
-                },
-                {scope: 'tag', begin: `\\@[a-z_][a-z0-9]*`},
-                {scope: 'meta', begin: `#[a-z][a-z0-9_]*`},
-            ]
-        }});
+            {
+                className: 'comment',
+                begin: `/\\*`,
+                end: `\\*/`,
+            },
+            {className: 'tag', begin: `\\@[a-z_][a-z0-9]*`},
+            {className: 'meta', begin: `#[a-z][a-z0-9_]*`},
+        ]
+    };
+}});
 </script>

@@ -2,7 +2,12 @@
 <head >
     <title>Jai Syntax Highlighting</title>
     <meta charset="utf-8"/>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+    <!--
+         Version 10.6.0 is what Discourse currently uses.
+         To check the hljs version being used by Discourse, open your Discourse webskte,
+         open the developer console, and type: `hljs.versionString`
+    -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.6.0/highlight.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../common/common.scss">
 
     <style>
@@ -146,8 +151,8 @@ main :: () {
     } else {
         console.log('jai_language_definition() function not defined');
     }
-    var highlighted_code_1 = hljs.highlight(jai_code_1, {language: 'jai', ignoreIllegals: true});
-    var highlighted_code_2 = hljs.highlight(jai_code_2, {language: 'jai', ignoreIllegals: true});
+    var highlighted_code_1 = hljs.highlight('jai', jai_code_1);
+    var highlighted_code_2 = hljs.highlight('jai', jai_code_2);
     document.getElementById('code_container_1').innerHTML = highlighted_code_1.value;
     document.getElementById('code_container_2').innerHTML = highlighted_code_2.value;
 </script>

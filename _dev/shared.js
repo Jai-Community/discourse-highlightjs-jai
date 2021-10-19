@@ -1,3 +1,6 @@
+// Current hljs version used by Discourse is 10.6.0
+// Reference: https://github.com/highlightjs/highlight.js/tree/eb122d3b7f88e3471e871866d73e2a99aafb20e1/docs
+
 // Edit this language definition function and test by opening test-syntax-highlight.html in your browser.
 // Once done, copy this function over to common/head_tag.html
 function jai_language_definition() {
@@ -15,15 +18,15 @@ function jai_language_definition() {
         },
         contains: [
             {
-                scope: 'comment', begin: '//', end: '$',
+                className: 'comment', begin: '//', end: '$',
             },
             {
-                scope: 'comment',
+                className: 'comment',
                 begin: `/\\*`,
                 end: `\\*/`,
             },
-            {scope: 'tag', begin: `\\@[a-z_][a-z0-9]*`},
-            {scope: 'meta', begin: `#[a-z][a-z0-9_]*`},
+            {className: 'tag', begin: `\\@[a-z_][a-z0-9]*`},
+            {className: 'meta', begin: `#[a-z][a-z0-9_]*`},
         ]
     };
 }
