@@ -1,10 +1,10 @@
 <script type="text/discourse-plugin" version="0.13">
 
-    //
-    // Add Jai language to HighlightJS
-    // Adapted from: https://meta.discourse.org/t/hack-to-install-a-new-language-for-highlight-js-on-a-hosted-discourse/55818/7
-    //
-    api.registerHighlightJSLanguage("jai", () => {
+//
+// Edit jai_language_definition() in _dev/shared.js, and once done, copy it over here.
+// Read more in README.md
+//
+function jai_language_definition() {
     return {
         name: 'jai',
         aliases: ['jai'],
@@ -29,5 +29,13 @@
             {className: 'tag', begin: `\\@[a-z_][a-z0-9]*`},
             {className: 'meta', begin: `#[a-z][a-z0-9_]*`},
         ]
-    }});
+    };
+}
+
+//
+// Add Jai language to HighlightJS
+// Adapted from: https://meta.discourse.org/t/hack-to-install-a-new-language-for-highlight-js-on-a-hosted-discourse/55818/7
+//
+api.registerHighlightJSLanguage("jai", jai_language_definition);
+
 </script>
