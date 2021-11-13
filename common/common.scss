@@ -7,6 +7,13 @@
 .lang-jai .hljs-tag { color: darkgray; font-weight: bold; }
 .lang-jai .hljs-meta { color: darkorange; }
 
+.lang-jai .hljs-double_quote_string, .lang-jai .hljs-multiline_string {
+  color: indianred;
+}
+.lang-jai .hljs-string_var_placeholder, .lang-jai .hljs-string_escape_sequence {
+  background-color: rgba(205, 92, 92, 0.1);
+}
+
 
 .lang-jai.hljs {
   /* Disable max-height as to avoid vertical scrollbar; always show code blocks in full. */

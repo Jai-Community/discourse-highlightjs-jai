@@ -115,6 +115,26 @@ z: Complex($A, $B, $C);
 #if mode == .GLOBAL {
     array : [global_size] u8 = ---;
 }
+x = "Hello";
+print("x is: '%'.\\n", x);
+print("Escape sequences: \\eEscape, \\nNewline");
+print("\\rReturn, \\tTab, \\"Quote, \\\\Slash, \\0Zero-byte");
+print("\\xAB, \\xaB, \\xAb, \\d1, \\d90, \\d255");
+print("\\uABCD, \\uABCDEF12");
+
+INSERTION_STRING :: #string DONE
+NUM_ENTITY_TYPES :: %1;
+NOTDONE
+let's talk about #asm
+DONE
+
+MULTILINGUAL :: #string DONE
+NUM_ENTITY_TYPES :: %1;
+русский текст
+     简体中文
+हिन्दी भाषा
+DONE
+// Extra spaces at the end of the line after "DONE" are intentional
 `;
 
     var jai_code_2 = `point :: ($$x: int, $$y: int) -> Point {
@@ -128,14 +148,15 @@ z: Complex($A, $B, $C);
   }
 }
 f :: () => Point {} @RunWhenReady
-INSERTION_STRING :: #string DONE
-NUM_ENTITY_TYPES :: %1;
-DONE
 Direction :: enum_flags u8 {
     EAST  :: 1;
     NORTH :: 2;
     WEST  :: 4;
     SOUTH :: 8;
+}
+Completion :: enum_flags u8 {
+DONE :: 1; // DONE starts from the very beginning of the line intentionally, as to try to interfere with the "DONE" token above.
+IN_PROGRESS :: 2;
 }
 main :: () {
     print("a % b % c %\\n", a, b, c);
